@@ -43,7 +43,7 @@ export async function create(text, name, username) {
 }
 
 export async function update(id, text) {
-  const tweet = getById(id);
+  const tweet = await getById(id);
   if (tweet) {
     tweet.text = text;
   }
