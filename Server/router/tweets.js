@@ -51,7 +51,7 @@ router.post("", (req, res, next) => {
   tweets = [tweet, ...tweets];
   res.status(201).json(tweet);
 });
-// PUT
+
 router.put("/:id", (req, res, next) => {
   const id = req.params.id;
   const text = req.body.text;
@@ -64,7 +64,6 @@ router.put("/:id", (req, res, next) => {
   }
 });
 
-// DELETE
 router.delete("/:id", (req, res, next) => {
   const id = req.params.id;
   tweets = tweets.filter((tweet) => tweet.id !== id);
