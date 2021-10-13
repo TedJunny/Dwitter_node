@@ -5,7 +5,7 @@ let tweets = [
     createdAt: Date.now().toString(),
     name: "Ted",
     username: "tedjunny",
-    url: "https://i.ibb.co/jWqbYPN/IMG-0008.jpg",
+    url: "https://ifh.cc/g/X60kMy.jpg",
   },
   {
     id: "2",
