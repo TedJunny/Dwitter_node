@@ -19,8 +19,8 @@ export async function getById(req, res) {
 }
 
 export async function create(req, res, next) {
-  const { text, name, username } = req.body;
-  const tweet = await tweetRepository.create(text, name, username);
+  const { text } = req.body;
+  const tweet = await tweetRepository.create(text, req.userId);
   res.status(201).json(tweet);
 }
 
