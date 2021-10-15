@@ -7,6 +7,14 @@ let users = [
     email: "minha@server.com",
     url: "https://ifh.cc/g/dEVLtA.jpg",
   },
+  {
+    id: "2",
+    username: "ellie",
+    password: "$2b$10$BKL2q4pB0f5GcLbODWky/uAuKgDMr6Nzem7vrRjrODyBMo7ImTKU2",
+    name: "Ellie",
+    email: "ellie@server.com",
+    url: "https://ifh.cc/g/Z5foo7.jpg",
+  },
 ];
 
 export async function findByUsername(username) {
