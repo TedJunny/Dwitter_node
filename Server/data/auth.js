@@ -1,35 +1,27 @@
-let users = [
-  {
-    id: "1",
-    username: "hamina",
-    password: "$2b$10$BKL2q4pB0f5GcLbODWky/uAuKgDMr6Nzem7vrRjrODyBMo7ImTKU2",
-    name: "Hamina",
-    email: "minha@server.com",
-    url: "https://ifh.cc/g/dEVLtA.jpg",
-  },
-  {
-    id: "2",
-    username: "ellie",
-    password: "$2b$10$BKL2q4pB0f5GcLbODWky/uAuKgDMr6Nzem7vrRjrODyBMo7ImTKU2",
-    name: "Ellie",
-    email: "ellie@server.com",
-    url: "https://ifh.cc/g/Z5foo7.jpg",
-  },
-];
+import { db } from "../db/database.js";
 
 export async function findByUsername(username) {
-  return users.find((user) => user.username === username);
+  return db
+    .execute("SELECT * FROM users WHERE username=?", [username])
+    .then((result) => {
+      return result[0][0];
+    });
 }
 
 export async function findById(id) {
-  return users.find((user) => user.id === id);
+  return db.execute("SELECT * FROM users WHERE id=?", [id]).then((result) => {
+    return result[0][0];
+  });
 }
 
 export async function createUser(user) {
-  const created = {
-    ...user,
-    id: Date.now().toString(),
-  };
-  users.push(created);
-  return created.id;
+  const { username, password, name, email, url } = user;
+  return db
+    .execute(
+      "INSERT INTO users (username, password, name, email, url) VALUES (?,?,?,?,?)",
+      [username, password, name, email, url]
+    )
+    .then((result) => {
+      return result[0].insertId;
+    });
 }
