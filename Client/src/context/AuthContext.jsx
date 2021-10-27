@@ -36,7 +36,7 @@ export function AuthProvider({ authService, authErrorEventBus, children }) {
 
   useEffect(() => {
     authService.csrfToken().then(setCsrfToken).catch(console.error);
-  });
+  }, [authService]);
 
   const signUp = useCallback(
     async (username, password, name, email, url) =>
